@@ -11,8 +11,6 @@
 
 runtime! debian.vim
 
-set guioptions+=a
-
 autocmd filetype python nnoremap <F11> :w <bar> %y+ <bar> exec '!python3 '.shellescape('%')<CR>
 autocmd filetype java nnoremap <F11> :w <bar> %y+ <bar> exec '!javac '.shellescape('%').' && java '.shellescape('%:r')<CR>
 autocmd filetype c nnoremap <F11> :w <bar> %y+ <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
