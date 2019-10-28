@@ -1,4 +1,3 @@
-" This is for ChromeOS
 " All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by
 " the call to :runtime you can find below.  If you wish to change any of those
 " settings, you should do it in this file (/etc/vim/vimrc), since debian.vim
@@ -11,10 +10,38 @@
 
 runtime! debian.vim
 
+set guioptions+=a
+
 autocmd filetype python nnoremap <F11> :w <bar> %y+ <bar> exec '!python3 '.shellescape('%')<CR>
 autocmd filetype java nnoremap <F11> :w <bar> %y+ <bar> exec '!javac '.shellescape('%').' && java '.shellescape('%:r')<CR>
 autocmd filetype c nnoremap <F11> :w <bar> %y+ <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 autocmd filetype cpp nnoremap <F11> :w <bar> %y+ <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'sheerun/vim-polyglot'
+Plug 'joshdick/onedark.vim'
+Plug 'itchyny/lightline.vim'
+
+call plug#end()
+
+let g:onedark_hide_endofbuffer = 1
+let g:onedark_terminal_italics = 1
+
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ }
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set termguicolors
+set laststatus=2
+set number
+set background=dark
+syntax on
+colorscheme onedark
 
 " Vim will load $VIMRUNTIME/defaults.vim if the user does not have a vimrc.
 " This happens after /etc/vim/vimrc(.local) are loaded, so it will override
@@ -61,6 +88,6 @@ autocmd filetype cpp nnoremap <F11> :w <bar> %y+ <bar> exec '!g++ '.shellescape(
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
- source /etc/vim/vimrc.local
+  source /etc/vim/vimrc.local
 endif
 
