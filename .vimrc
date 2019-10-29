@@ -7,7 +7,6 @@
 
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages available in Debian.
-
 runtime! debian.vim
 
 set guioptions+=a
@@ -40,6 +39,7 @@ set termguicolors
 set laststatus=2
 set number
 set background=dark
+
 syntax on
 colorscheme onedark
 
